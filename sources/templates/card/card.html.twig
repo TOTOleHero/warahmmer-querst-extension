@@ -1,0 +1,153 @@
+{% extends 'base.html.twig' %}
+
+
+{% block stylesheets %}
+
+        <style>   .wrapper {
+	position: relative;
+	/* background: blue;  */
+	height: 359px;
+	width: 239px;
+}
+
+.background {
+	position: absolute;
+	/* background: yellow;   */
+}
+
+.front {
+	position: relative;
+	top: 28px;
+	left: 29px;
+	width: 49mm;
+	/* background: pink;  */
+	height: 79mm;
+	display: block;
+}
+
+table,
+tr,
+td {
+	margin: 0;
+	padding: 0;
+	border-spacing: 0;
+	/* border: 1px solid black;     */
+}
+
+table.main {
+	width: 49mm;
+	height: 79mm;
+	display: block;
+}
+
+tr,
+td {
+	width: 49mm;
+}
+
+.title {
+	height: 10mm;
+	color: yellow;
+	text-align: center;
+}
+
+.profile {
+	height: 16mm;
+}
+
+.dice {
+	height: 8mm;
+    font-size: 2mm;
+}
+
+.body {
+	height: 45mm;
+	text-align: justify;
+	vertical-align: top;
+    position: relative;
+}
+
+.body p {
+	font-size: 2.4mm;
+    padding: 1.5mm;
+    text-shadow: 0.3px 0.3px 0px #ffffff;
+    position: absolute;
+    margin: 0;
+}
+ 
+.body .coin {
+    flex: none;
+    font-size: 1.8mm;
+    font-weight: bold;
+    border: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 36px;
+    height: 9mm;
+    resize: vertical;
+    overflow: none;
+    text-align: center;
+    max-height: 9mm;
+    min-height: 9mm;
+    float: left;
+    bottom: 6px;
+    position: absolute;
+    left: 4px;
+    text-shadow: 0.3px 0.3px 0px #ffffff;
+
+} 
+
+
+.body .coin .gold {
+    font-size: 4mm;
+    line-height: 2mm;
+}
+
+
+.body .level  {
+    font-size: 2.9mm;
+    font-weight: bold;
+    color: yellow;
+    float: right;
+    right: 2mm;
+    position: absolute;
+    top: 1mm;
+    text-shadow: 0.3px 0.3px 0px #000000;
+}
+
+.body span.special-rule{
+    font-size: 2.9mm;
+    font-weight: bold;
+} 
+
+td.dice table{font-size: 2.8mm; }
+td.dice th.label {width: 16mm;}
+td.dice td {width: 3.1mm; text-align: center;letter-spacing: -1px;}
+td.dice td.end    {width: 2.1mm;}
+
+td.profile  table {
+    font-size: 2.4mm;
+}
+td.profile th.label { text-align: left; padding-left:1mm; width: 17.5mm;}
+td.profile td { width: 6mm;} 
+
+.body .image {
+       float: right;
+       clear: right; 
+
+       position:absolute;
+    
+
+}
+         
+        </style>    
+{% endblock %}
+
+
+
+{% block body %}     
+    {% include 'card/monoMonster.html.twig' with {'cardData': cardData} %}
+    {% include 'card/monoMonster.html.twig' with {'cardData': cardData} %} 
+    {% include 'card/monoMonster.html.twig' with {'cardData': cardData} %}   
+{% endblock %}
