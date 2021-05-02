@@ -1,1 +1,1 @@
-# warahmmer-querst-extension
+# warhammer-quest-extension
