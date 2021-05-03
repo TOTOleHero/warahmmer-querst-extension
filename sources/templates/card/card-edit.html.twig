@@ -1,0 +1,26 @@
+{% extends 'card/card.html.twig' %}
+
+
+{% block stylesheets %}
+
+    {{ parent() }}
+
+    <style>
+
+    .editor {
+        	position: relative;
+        background: #885509;  
+        height: 359px;
+        width: 239px;
+        display: inline-block;
+    }
+    </style>
+
+{% endblock %}
+
+{% block body %} 
+<div>    
+    {% include 'card/monoMonster.html.twig' with {'cardData': cardData} %}
+    {% include 'card/editMonoMonster.html.twig' with {'cardData': cardData} %}
+</div>
+{% endblock %}

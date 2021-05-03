@@ -3,11 +3,65 @@
 
 {% block stylesheets %}
 
-        <style>   .wrapper {
+        <style>
+@font-face {
+    font-family: 'Newtext Bk BT Italic';
+    src: url('{{ absolute_url(asset('fonts/NewtextBkBTItalic.woff2')) }}') format('woff2'),
+        url('{{ absolute_url(asset('fonts/NewtextBkBTItalic.woff')) }}') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Newtext Rg BT';
+    src: url('{{ absolute_url(asset('fonts/NewtextITCbyBT-Regular.woff2')) }}') format('woff2'),
+        url('{{ absolute_url(asset('fonts/NewtextITCbyBT-Regular.woff')) }}') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Newtext Bold';
+    src: url('{{ absolute_url(asset('fonts/NewtextBold.woff2')) }}') format('woff2'),
+        url('{{ absolute_url(asset('fonts/NewtextBold.woff')) }}') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Casablanca Antique Plain';
+    src: url('{{ absolute_url(asset('fonts/CasablancaAntiquePlain.woff2')) }}') format('woff2'),
+        url('{{ absolute_url(asset('fonts/CasablancaAntiquePlain.woff')) }}') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Verdana';
+    src: url('{{ absolute_url(asset('fonts/Verdana.woff2')) }}') format('woff2'),
+        url('{{ absolute_url(asset('fonts/Verdana.woff')) }}') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+       font-size: 1.9mm;
+       font-family: 'Newtext Rg BT';
+       letter-spacing: -0.05em;
+       word-spacing: 0.2em;
+}
+
+   .wrapper {
 	position: relative;
 	/* background: blue;  */
 	height: 359px;
 	width: 239px;
+    display: inline-block;
 }
 
 .background {
@@ -16,13 +70,11 @@
 }
 
 .front {
-	position: relative;
-	top: 28px;
-	left: 29px;
-	width: 49mm;
-	/* background: pink;  */
-	height: 79mm;
-	display: block;
+position: relative;
+    width: 48.3mm;
+    height: 79mm;
+    display: inline-block;
+    padding: 28px 28px 37px 29px;
 }
 
 table,
@@ -31,7 +83,6 @@ td {
 	margin: 0;
 	padding: 0;
 	border-spacing: 0;
-	/* border: 1px solid black;     */
 }
 
 table.main {
@@ -46,18 +97,36 @@ td {
 }
 
 .title {
-	height: 10mm;
+    font-family: 'Casablanca Antique Plain';
+	height: 9.7mm;
 	color: yellow;
 	text-align: center;
+    font-size: 340%;
 }
 
 .profile {
+    font-family: 'Newtext Bold';
 	height: 16mm;
 }
 
 .dice {
 	height: 8mm;
-    font-size: 2mm;
+    font-size: 107%;
+    font-family: 'Verdana';
+    letter-spacing: 0em;
+}
+
+.dice table{font-size: 100%; }
+.dice td {width: 3.1mm; text-align: center;letter-spacing: -1px;}
+.dice td.end    {width: 2.1mm;}
+.dice td.label {
+    width: 15mm;
+    text-align: left;
+    padding: 3px;
+    letter-spacing: 0em;
+}
+.dice tr.adversary {
+    font-weight: bold;
 }
 
 .body {
@@ -68,16 +137,16 @@ td {
 }
 
 .body p {
-	font-size: 2.4mm;
+	font-size: 115%;
     padding: 1.5mm;
-    text-shadow: 0.3px 0.3px 0px #ffffff;
     position: absolute;
     margin: 0;
+
 }
  
 .body .coin {
     flex: none;
-    font-size: 1.8mm;
+    font-size: 73%;
     font-weight: bold;
     border: 0;
     display: flex;
@@ -94,43 +163,44 @@ td {
     bottom: 6px;
     position: absolute;
     left: 4px;
-    text-shadow: 0.3px 0.3px 0px #ffffff;
+    font-family: Verdana;
+
 
 } 
 
 
 .body .coin .gold {
-    font-size: 4mm;
-    line-height: 2mm;
+    font-size: 230%;
+    line-height: 86%;
 }
 
 
 .body .level  {
-    font-size: 2.9mm;
+    font-size: 100%;
     font-weight: bold;
     color: yellow;
     float: right;
     right: 2mm;
     position: absolute;
     top: 1mm;
-    text-shadow: 0.3px 0.3px 0px #000000;
+    /* text-shadow: 0.3px 0.3px 0px #000000; */
 }
 
 .body span.special-rule{
-    font-size: 2.9mm;
+    font-size: 100%;
     font-weight: bold;
 } 
 
-td.dice table{font-size: 2.8mm; }
-td.dice th.label {width: 16mm;}
-td.dice td {width: 3.1mm; text-align: center;letter-spacing: -1px;}
-td.dice td.end    {width: 2.1mm;}
 
-td.profile  table {
-    font-size: 2.4mm;
+.profile  table {
+    font-size: 100%;
 }
-td.profile th.label { text-align: left; padding-left:1mm; width: 17.5mm;}
-td.profile td { width: 6mm;} 
+.profile th.label { 
+    text-align: right;
+    padding-left: 1mm;
+    width: 16.5mm;
+}
+.profile td { width: 6mm;} 
 
 .body .image {
        float: right;
@@ -146,8 +216,9 @@ td.profile td { width: 6mm;}
 
 
 
-{% block body %}     
+{% block body %} 
+<div>    
     {% include 'card/monoMonster.html.twig' with {'cardData': cardData} %}
-    {% include 'card/monoMonster.html.twig' with {'cardData': cardData} %} 
-    {% include 'card/monoMonster.html.twig' with {'cardData': cardData} %}   
+  
+</div>
 {% endblock %}

@@ -6,7 +6,7 @@
                 <table class="main">                               
                     <tr>               
                         <td class="title">               
-                            <div><span>{{cardData[0].count}}</span> {{cardData[0].profile.name}}
+                            <div><span id="count">{{cardData[0].count}}</span> <span id="title">{{cardData[0].profile.name}}</span>
                             </div></td>               
                     </tr>                               
                     <tr>               
@@ -17,21 +17,21 @@
                             
                             
                           <tr>               
-                        <th class="label">Points de vie</th><td >{{cardData[0].profile.wounds}}</td>             
-                        <th class="label">Endurance</th><td >{{cardData[0].profile.toughness}}</td>              
+                        <th class="label">Points de Vie</th><td >: <span id="wounds">{{cardData[0].profile.wounds}}</span></td>             
+                        <th class="label">Endurance</th><td >: <span id="toughness">{{cardData[0].profile.toughness}}</span></td>              
                         </tr>                               
                                <tr>               
-                        <th class="label">Mouvement</th><td >{{cardData[0].profile.movement}}</td>             
-                        <th class="label">Inititive</th><td >{{cardData[0].profile.initiative}}</td>              
+                        <th class="label">Mouvement</th><td >: <span id="movement">{{cardData[0].profile.movement}}</span></td>             
+                        <th class="label">Inititive</th><td >: <span id="initiative">{{cardData[0].profile.initiative}}</span></td>              
                         </tr>   <tr>               
-                        <th class="label">Combat</th><td >{{cardData[0].profile.weaponSkill}}</td>             
-                        <th class="label">Attaques</th><td >{{cardData[0].profile.attacks}}</td>              
+                        <th class="label">Combat</th><td >: <span id="weaponSkill">{{cardData[0].profile.weaponSkill}}</span></td>             
+                        <th class="label">Attaques</th><td >: <span id="attacks">{{cardData[0].profile.attacks}}</span></td>              
                         </tr>   <tr>               
-                        <th class="label">Tir</th><td >{{cardData[0].profile.ballisticSkill}}</td>             
-                        <th class="label">Armure</th><td >{{cardData[0].profile.armor}}</td>              
+                        <th class="label">Tir</th><td >: <span id="ballisticSkill">{{cardData[0].profile.ballisticSkill}}</span></td>             
+                        <th class="label">Armure</th><td >: <span id="armor">{{cardData[0].profile.armor}}</span></td>              
                         </tr> <tr>               
-                        <th class="label">Force</th><td >{{cardData[0].profile.strength}}</td>             
-                        <th class="label">Dommage</th><td>{{cardData[0].profile.damageDice}}</td>           
+                        <th class="label">Force</th><td >: <span id="strength">{{cardData[0].profile.strength}}</span></td>             
+                        <th class="label">Dommage</th><td>: <span id="damageDice">{{cardData[0].profile.damageDice}}</span></td>           
                         </tr>   
                             
                             </table>
@@ -45,32 +45,32 @@
                             <table>
                             
                             
-                          <tr>               
-                        <th class="label">CC Adverse</th><td >1             
-                        </td><td >2             
-                        </td><td >3             
-                        </td><td >4             
-                        </td><td >5            
-                        </td><td >6             
-                        </td><td >7             
-                        </td><td >8            
-                        </td><td >9            
-                        </td> <td class="end">10            
+                    <tr class="adversary">               
+                        <td class="label">CC Adverse</td>
+                        <td >1</td>
+                        <td >2</td>
+                        <td >3</td>
+                        <td >4</td>
+                        <td >5</td>
+                        <td >6</td>
+                        <td >7</td>
+                        <td >8</td>
+                        <td >9</td>
+                        <td class="end">10            
                         </td>              
                     </tr>                               
-                    <tr>               
-                        <th class="label">Pour toucher</th>
-                        <td>{{cardData[0].diceRoll[0]}}             
-                        </td><td >{{cardData[0].diceRoll[1]}}              
-                        </td><td >{{cardData[0].diceRoll[2]}}              
-                        </td><td >{{cardData[0].diceRoll[3]}}              
-                        </td><td >{{cardData[0].diceRoll[4]}}             
-                        </td><td >{{cardData[0].diceRoll[5]}}              
-                        </td><td >{{cardData[0].diceRoll[6]}}              
-                        </td><td >{{cardData[0].diceRoll[7]}}             
-                        </td><td >{{cardData[0].diceRoll[8]}}             
-                        </td> <td class="end" >{{cardData[0].diceRoll[9]}}             
-                        </td>        
+                    <tr class="roll">               
+                        <td class="label">Pour Toucher</td>
+                        <td>{{cardData[0].diceRoll[0]}}</td>
+                        <td >{{cardData[0].diceRoll[1]}}</td>
+                        <td >{{cardData[0].diceRoll[2]}}</td>
+                        <td >{{cardData[0].diceRoll[3]}}</td>
+                        <td >{{cardData[0].diceRoll[4]}}</td>
+                        <td>{{cardData[0].diceRoll[5]}}</td>
+                        <td >{{cardData[0].diceRoll[6]}}</td>
+                        <td >{{cardData[0].diceRoll[7]}}</td>
+                        <td >{{cardData[0].diceRoll[8]}}</td>
+                        <td class="end" >{{cardData[0].diceRoll[9]}}</td>        
                     </tr>   
                             
                             </table></td>               
@@ -79,11 +79,13 @@
                         <td class="body">                 
                             <img class="image" src="{{ absolute_url(asset('images/db-files/' ~ cardData[0].image)) }}" style="{{cardData[0].imageStyle}}" />             
                             <div class="level">Niveau {{cardData[0].profile.battleLevel}}</div>
-                            <div class="coin"><span class="text">Valeur</span> <span class="gold">{{cardData[0].profile.gold}}</span> <span class="text">chaque</span></div>
-                            <p><span class="special-rule">Règles spéciales</span><br />
+                            <div class="coin"><span class="text">VALEUR</span> <span id="gold" class="gold">{{cardData[0].profile.gold}}</span> <span class="text">CHACUN</span></div>
+                            <p><span class="special-rule">Règles spéciales</span> : <br />
+                            <span class="rules">
                             {% for rule in cardData[0].rules %}
-                                <b>{{rule.name}}</b> : {{rule.description}}<br /> 
+                                <span class="rule"><b><span class="ruleName">{{rule.name}}</span></b> : <span class="ruleText">{{rule.description}}</span><br/></span> 
                             {% endfor %}
+                                </span>
                               </p> 
                             </td>               
                     </tr>                               

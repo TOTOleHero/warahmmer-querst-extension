@@ -31,10 +31,30 @@ class CardController extends AbstractController
     }
 
 
+
     /**
-     * @Route("/card", name="card")
+     * @Route("/card/edit/{cardId}", name="card_edit")
+     */
+    public function edit(): Response
+    {
+        return $this->render('card/card-edit.html.twig', [
+            'cardData' => $this->getCardData()
+        ]);
+        
+    }
+
+    /**
+     * @Route("/card/view/{cardId}", name="card_view")
      */
     public function index(): Response
+    {
+        return $this->render('card/card.html.twig', [
+            'cardData' => $this->getCardData()
+        ]);
+    }
+
+
+    protected function getCardData()
     {
         $profile = $this->profileManager->createProfile();
 
@@ -102,14 +122,13 @@ class CardController extends AbstractController
                             'count' => '',
                             'profile' => $profile,
                             'image' => 'cobra.png',
-                            'imageStyle' => 'width: 81px;right: -7px;bottom: 6px;',
+                            'imageStyle' => 'width: 81px;right: 4px;bottom: 6px;',
                             'diceRoll' => $this->profileManager->getCombatLine($profile->getWeaponSkill()),
                             'rules' => $rules,
                         ]
             ];
-        
-        return $this->render('card/card.html.twig', [
-            'cardData' => $cardData
-        ]);
+
+            return $cardData;
     }
+
 }

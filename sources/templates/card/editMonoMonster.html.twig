@@ -1,0 +1,93 @@
+<div class="editor">
+<form>
+<div >
+    <input name="count"/>
+    <input name="title"/>
+</div>
+<div>
+    <input name="wounds"/>
+    <input name="movement"/>
+    <input name="weaponSkill"/>
+    <input name="ballisticSkill"/>
+    <input name="strength"/>
+    <input name="toughness"/>
+    <input name="initiative"/>
+    <input name="attacks"/>
+    <input name="armor"/>
+    <input name="damageDice"/>
+</div>
+<div id="ruleEditor">
+
+
+</div>
+<div>
+    <input name="gold"/>
+
+</div>
+</form>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+
+var elementList = [
+    'count',
+    'title',
+    'wounds',
+    'movement',
+    'weaponSkill',
+    'ballisticSkill',
+    'strength',
+    'toughness',
+    'initiative',
+    'attacks',
+    'armor',
+    'damageDice',
+    'gold'
+];
+
+var ruleHtml = '<span class="rule"><b><span class="ruleName"></span></b> : <span class="ruleText"></span><br/></span>';
+var ruleInputHtml = '<div class="rule"><input class="ruleName"/> <textarea class="ruleText"></textarea></div>';
+
+$( document ).ready(function() {
+    $.each(elementList,function (index,elementName)
+    {
+        $('.editor form input[name='+elementName+']').val($('#'+elementName).text());
+        $('.editor form input[name='+elementName+']').keyup(function() {
+            $('#'+$(this).attr('name')).text($(this).val());
+        });
+        
+
+    })
+
+    var looper = 1;
+        $('.rules').find('.rule').each(
+            function () {
+                var insertedHtml = $(ruleInputHtml);
+                
+                $(this).find('.ruleName').first().attr('id','nameRuleId'+looper);
+                $(insertedHtml).find('.ruleName').first().attr('name','nameRuleId'+looper);
+                $(this).find('.ruleText').first().attr('id','textRuleId'+looper);
+                $(insertedHtml).find('.ruleText').first().attr('name','textRuleId'+looper);
+
+               
+
+                $('#ruleEditor').append(insertedHtml);
+
+                $('#ruleEditor input[name=nameRuleId'+looper+']').val($('#nameRuleId'+looper).text());
+                $('#ruleEditor input[name=nameRuleId'+looper+']').keyup(function() {
+                    $('#'+$(this).attr('name')).text($(this).val());
+                });
+
+                $('#ruleEditor textarea[name=textRuleId'+looper+']').val($('#textRuleId'+looper).text());
+                $('#ruleEditor textarea[name=textRuleId'+looper+']').keyup(function() {
+                    $('#'+$(this).attr('name')).text($(this).val());
+                });
+
+                looper++;
+            }
+        );
+});
+
+
+</script>
+</div>
